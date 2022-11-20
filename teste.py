@@ -1,12 +1,21 @@
 from stack_viewer import Stack
 
 
-s = Stack()
-end = s.var('end',False)
+def format_list(entrada,schema):
+    s = Stack()
+    entrada = s.var('entrada',entrada)
+    schema = s.var('schema',schema)
+    char = s.var('char',None)
+    posicao_schema = s.var('posicao_schema',0)
+    
+    
+    while posicao_schema < len(schema):
+        
+        posicao_schema.set(posicao_schema + 1)
+        char.set(schema[posicao_schema.get()])
 
-x = s.var('x',0)
-while x < 10:
-    x.set(x+ 1)
-    s.sleep(1)
+        
+        s.sleep(1)
 
-end.set(True)
+format_list('44107365824','NNN.NNN.NNN-24')
+

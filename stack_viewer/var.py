@@ -9,10 +9,15 @@ class Var:
         self._value = None
     #build in method for = operator
 
-    def set(self,value):
+
+    @staticmethod
+    def _convert_value(value):
         if hasattr(value,'get'):
-            value = value.get()
-            
+            return  value.get()
+        return value
+
+    def set(self,value):
+        value = self._convert_value(value)
         self._value = value
         if not  self._production:
             self._render()
@@ -21,45 +26,15 @@ class Var:
     def get(self):
         return self._value
     
+    
+    def __getitem__(self,key):
+        key = self._convert_value(key)
+        return self.get()[key]
+
     def __add__(self,other):
-        return self.get() + other
+        return self.get() + self._convert_value(other)
     
-    def __sub__(self,other):
-        return self.get() - other
-    
-    def __mul__(self,other):
-        return self.get() * other
-    
-    def __truediv__(self,other):
-        return self.get() / other
-    
-    def __floordiv__(self,other):
-        return self.get() // other
-    
-    def __mod__(self,other):
-        return self.get() % other
-    
-    def __pow__(self,other):
-        return self.get() ** other
-    
-    def __eq__(self,other):
-        return self.get() == other
-    
-    def __ne__(self,other):
-        return self.get() != other
-    
-    def __lt__(self,other):
-        return self.get() < other
-    
-    def __le__(self,other):
-        return self.get() <= other
-    
-    def __gt__(self,other):
-        return self.get() > other
-    
-    def __ge__(self,other):
-        return self.get() >= other
-    
+
     def __repr__(self) -> str:
         return str(self.get())
     

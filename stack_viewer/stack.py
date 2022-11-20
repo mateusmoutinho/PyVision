@@ -13,9 +13,10 @@ class Stack:
         self._production = production
         self._format = format
         self._preserve_end_file = preserve_end_file
-    @staticmethod
-    def sleep(seconds:float):
-        time.sleep(seconds)
+    
+    def sleep(self,seconds:float):
+        if not self._production:
+            time.sleep(seconds)
 
     def var(self,name:str,value:Any=None):
         created = Var(name,self._render,self._production)
