@@ -26,14 +26,36 @@ class Var:
     def get(self):
         return self._value
     
+    def __le__(self,other):
+        return self.get() <= self._convert_value(other)
     
-    def __getitem__(self,key):
-        key = self._convert_value(key)
-        return self.get()[key]
+    def __lt__(self,other):
+        return self.get() < self._convert_value(other)
+    
+    def __eq__(self,other):
+        return self.get() == self._convert_value(other)
+    
+    def __ne__(self,other):
+        return self.get() != self._convert_value(other)
+    
+    def __gt__(self,other):
+        return self.get() > self._convert_value(other)
+    
+    def __ge__(self,other):
+        return self.get() >= self._convert_value(other)
+    
+    def __sub__(self,other):
+        return self.get() - self._convert_value(other)
+
 
     def __add__(self,other):
         return self.get() + self._convert_value(other)
     
+
+    def __getitem__(self,key):
+        key = self._convert_value(key)
+        return self.get()[key]
+
 
     def __repr__(self) -> str:
         return str(self.get())

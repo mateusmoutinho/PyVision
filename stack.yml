@@ -1,4 +1,8 @@
-char: null
-entrada: '44107365824'
-posicao_schema: 0
-schema: NNN.NNN.NNN-24
+char_da_entrada: '4'
+char_do_schema: N
+entrada: 441.073.65824
+numero_ou_letra: true
+posicao_schema: 14
+posicao_texto: 13
+schema: NNN.NNN.NNN-NN
+texto_final: 441.073.658-24
