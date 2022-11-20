@@ -3,6 +3,7 @@ from typing import Any,List
 import yaml 
 import json 
 import os
+import time
 
 class Stack:
 
@@ -12,28 +13,36 @@ class Stack:
         self._production = production
         self._format = format
         self._preserve_end_file = preserve_end_file
-        
+    @staticmethod
+    def sleep(seconds:float):
+        time.sleep(seconds)
 
     def var(self,name:str,value:Any=None):
-        self._stack.append(Var(name,self._render,value,self._production))
-
-
- 
+        created = Var(name,self._render,self._production)
+        self._stack.append(created)
+        created.set(value)       
+        return created
 
     def _render(self):
+        
         if  self._production:
             return 
+   
         result = {}
         for var in self._stack:
-            result[var.name] = var.get()
+            try:
+                result[var.name] = var.get()
+            except:
+                result[var.name] = str(var)
+
 
         if self._format == 'yml':
-            with open(result,'w') as f:
-                yaml.dump(self._stack,f)
+            with open(f'{self._name}.yml','w') as f:
+                yaml.dump(result,f)
         
         if self._format == 'json':
-            with open(result,'w') as f:
-                json.dump(self._stack,f,indent=4)
+            with open(f'{self._name}.json','w') as f:
+                json.dump(result,f,indent=4)
     
 
     def __del__(self):
