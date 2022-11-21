@@ -7,7 +7,7 @@ def soma(x,y):
 
 def format_list(elementos):
     estagio = 'entrada'
-    format_list = Stack()
+    format_list = Stack(ignore=['elementos'])
     
     format_list.render(locals())
     for l in elementos:
@@ -15,6 +15,7 @@ def format_list(elementos):
         r = soma(l['x'],l['y'])
         format_list.breakpoint(locals())
 
+MainStack.filetipe = 'json'
 format_list([
 
     {'x':1,'y':2},

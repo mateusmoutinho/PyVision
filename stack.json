@@ -1,22 +1,19 @@
 {
     "format_list": {
-        "elementos": [
-            {
-                "x": 1,
-                "y": 2
-            },
-            {
-                "x": 3,
-                "y": 4
-            },
-            {
-                "x": 5,
-                "y": 6
-            }
-        ],
-        "l": {
-            "x": 5,
-            "y": 6
+        "estagio": "entrada",
+        "format_list": {
+            "_name": "format_list",
+            "_ignore": [
+                "elementos"
+            ]
+        }
+    },
+    "soma": {
+        "x": 1,
+        "y": 2,
+        "soma": {
+            "_name": "soma",
+            "_ignore": []
         }
     }
 }
