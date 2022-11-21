@@ -1,5 +1,8 @@
 from stack_viewer.var import Var
+from stack_viewer.introspect import get_var_name
 from typing import Any,List
+from types import FrameType
+import inspect
 import yaml 
 import json 
 import os
@@ -18,7 +21,11 @@ class Stack:
         if not self._production:
             time.sleep(seconds)
 
-    def var(self,name:str,value:Any=None):
+    def var(self,value:Any=None,name:str =None):
+        if name is None:
+            frame = inspect.currentframe().f_back
+            name = get_var_name(frame)
+    
         created = Var(name,self._render,self._production)
         self._stack.append(created)
         created.set(value)       

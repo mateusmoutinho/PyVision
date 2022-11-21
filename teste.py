@@ -4,14 +4,14 @@ from stack_viewer import Stack
 def format_list(entrada,schema):
     
     s = Stack()
-    entrada = s.var('entrada',entrada)
-    schema = s.var('schema',schema)
-    char_do_schema = s.var('char_do_schema',None)
-    char_da_entrada = s.var('char_da_entrada',None)
-    posicao_schema = s.var('posicao_schema',0)
-    posicao_texto = s.var('posicao_texto',0)
-    numero_ou_letra = s.var('numero_ou_letra',None)
-    texto_final = s.var('texto_final','')
+    entrada = s.var(entrada)
+    schema = s.var(schema)
+    char_do_schema = s.var()
+    char_da_entrada = s.var()
+    posicao_schema = s.var(0)
+    posicao_texto = s.var(0)
+    numero_ou_letra = s.var()
+    texto_final = s.var('')
 
     
     while posicao_schema < len(schema):
