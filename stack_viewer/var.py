@@ -16,7 +16,12 @@ class Var:
             return  value.get()
         return value
 
-    def set(self,value):
+    @property
+    def value(self):
+        return self.get()
+        
+    @value.setter
+    def v(self,value):
         value = self._convert_value(value)
         self._value = value
         if not  self._production:

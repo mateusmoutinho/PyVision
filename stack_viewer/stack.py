@@ -28,7 +28,7 @@ class Stack:
     
         created = Var(name,self._render,self._production)
         self._stack.append(created)
-        created.set(value)       
+        created.v = value       
         return created
 
     def _render(self):
