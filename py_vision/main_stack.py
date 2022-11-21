@@ -6,6 +6,7 @@ import time
 
 class MainStack:
     stack = {}
+    pointers = [stack]
     name = "stack"
     filetipe = "yml"
     production = False

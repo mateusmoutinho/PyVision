@@ -1,5 +1,6 @@
 from py_vision import Stack,MainStack
 import inspect
+
 def soma(x,y):
 
     soma = Stack(inspect.currentframe())
