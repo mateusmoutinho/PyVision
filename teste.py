@@ -1,46 +1,25 @@
+from py_vision import Stack,MainStack
 
+def soma(x,y):
+    soma = Stack()
+    soma.breakpoint(locals())
+    return x+y
 
-def format_list(entrada,schema):
-<<<<<<< HEAD
-    r = 20 
-    for x in range(10):
-        pass 
-        a =20
-        print(locals())
-=======
+def format_list(elementos):
+    estagio = 'entrada'
+    format_list = Stack()
     
-    s = Stack()
-    entrada = s.var(entrada)
-    schema = s.var(schema)
-    char_do_schema = s.var()
-    char_da_entrada = s.var()
-    posicao_schema = s.var(0)
-    posicao_texto = s.var(0)
-    numero_ou_letra = s.var()
-    texto_final = s.var('')
+    format_list.render(locals())
+    for l in elementos:
+        estagio = 'loop'
+        r = soma(l['x'],l['y'])
+        format_list.breakpoint(locals())
 
-    
-    while posicao_texto < len(entrada):
-        
+format_list([
 
-        char_do_schema.v = schema[posicao_schema]
-        char_da_entrada.v = entrada[posicao_texto]
+    {'x':1,'y':2},
+    {'x':3,'y':4},
+    {'x':5,'y':6},
 
-        s.sleep(1)
-        numero_ou_letra.v = char_do_schema in ['N','L']
-        
-        if numero_ou_letra == True:
-            posicao_texto.v = posicao_texto + 1    
-            texto_final.v = texto_final + char_da_entrada
-        else:
-            if char_da_entrada == char_do_schema:
-                posicao_texto.v = posicao_texto + 1
-
-            texto_final.v = texto_final + char_do_schema
-            
-        posicao_schema.v = posicao_schema + 1  
-
->>>>>>> d4046c3563e6ce2d47ff2fb7235ef925d2b5c492
-
-format_list('441.073.65824','NNN.NNN.NNN-NN')
+ ])
 

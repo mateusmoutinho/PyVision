@@ -1,8 +1,15 @@
-char_da_entrada: '4'
-char_do_schema: N
-entrada: 441.073.65824
-numero_ou_letra: true
-posicao_schema: 14
-posicao_texto: 13
-schema: NNN.NNN.NNN-NN
-texto_final: 441.073.658-24
+format_list:
+    elementos:
+    -   x: 1
+        y: 2
+    -   x: 3
+        y: 4
+    - &id001
+        x: 5
+        y: 6
+    estagio: loop
+    l: *id001
+    r: 11
+soma:
+    x: 5
+    y: 6
