@@ -2,8 +2,8 @@ from py_vision import Stack,MainStack
 import inspect
 def soma(x,y):
 
-    soma = Stack()
-    soma.breakpoint(locals())
+    soma = Stack(inspect.currentframe())
+    soma.breakpoint()
     return x+y
 
 def format_list():
@@ -13,7 +13,7 @@ def format_list():
     for x in range(10):
         estagio = 'loop'
         a = 20
-        a1 = a + x
+        a1 = soma(a,10)
         s.render_and_sleep(1)
 
     

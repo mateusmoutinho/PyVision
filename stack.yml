@@ -1,5 +1,9 @@
 s:
     a: 20
-    a1: 29
+    a1: 30
     estagio: loop
-    x: 9
+    x: 6
+soma:
+    breakpoint: 6
+    x: 20
+    y: 10

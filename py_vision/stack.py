@@ -48,16 +48,18 @@ class Stack:
         self.sleep(seconds)
     
     def breakpoint(self):
+
         #MainStack.stack[self._name]
         if MainStack.production:return
         self.render()
         line = inspect.currentframe().f_back.f_lineno
         MainStack.stack[self._name]["breakpoint"] = line
-        
+        MainStack.render()
         r = input(f'type b to break on line {line}: ')
         if r == 'b':
             raise Exception('breakpoint')
-        
+        del MainStack.stack[self._name]["breakpoint"]
+        MainStack.render()
 
 
     def __del__(self):
