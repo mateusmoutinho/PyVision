@@ -2,36 +2,38 @@
 import inspect
 from py_vision.introspect import get_var_name
 from py_vision.main_stack import MainStack
+from types import FrameType
 from typing import Any,List
 import time 
 import copy
 class Stack:
 
-    def __init__(self,ignore:list=[]) -> None:
+    def __init__(self,stack_frame:FrameType,ignore:list=[]) -> None:
         frame = inspect.currentframe()
         self._name = get_var_name(frame.f_back)
+        self._stack_frame = stack_frame
+    
         self._ignore = ignore
         MainStack.stack[self._name] ={}
 
 
 
-    def render(self,locals:dict) -> List[Any]:
+    def render(self) -> List[Any]:
+        
         if MainStack.production:return
-        formated_locals = copy.deepcopy(locals)
-
-        formated_locals.pop(self._name)
+        local_vars   = dict(self._stack_frame.f_locals)
+        formated_locals = copy.copy(local_vars)
         
         SERIALIZIBLE_TYPES = (int,float,str,bool,dict,list)
-        for x,y in locals.items():
+        for x,y in local_vars.items():
             if x in self._ignore:
                 formated_locals.pop(x)
                 continue
 
             if not  isinstance(y,SERIALIZIBLE_TYPES):
-                if hasattr(y,'__dict__'):
-                    formated_locals[x] = y.__dict__
-                else:
-                    formated_locals[x] = str(y)
+                formated_locals.pop(x)
+                continue
+
         MainStack.stack[self._name] = formated_locals
         MainStack.render()
 
@@ -41,24 +43,26 @@ class Stack:
         if MainStack.production:return
         time.sleep(seconds)
    
-    def render_and_sleep(self,seconds:float,locals:dict):
-        self.render(locals)
+    def render_and_sleep(self,seconds:float):
+        self.render()
         self.sleep(seconds)
     
-    def breakpoint(self,locals:dict):
+    def breakpoint(self):
         #MainStack.stack[self._name]
         if MainStack.production:return
-        self.render(locals)
+        self.render()
         line = inspect.currentframe().f_back.f_lineno
         MainStack.stack[self._name]["breakpoint"] = line
-
         
         r = input(f'type b to break on line {line}: ')
         if r == 'b':
             raise Exception('breakpoint')
         
+
+
     def __del__(self):
         if MainStack.production:return
-       
-        del MainStack.stack[self._name]
-        MainStack.render()
+        try:
+            del MainStack.stack[self._name]
+        except:pass
+        #MainStack.render()

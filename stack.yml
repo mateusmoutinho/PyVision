@@ -1,17 +1,5 @@
-format_list:
-    breakpoint: 16
-    elementos:
-    -   x: 1
-        y: 2
-    -   x: 3
-        y: 4
-    - &id001
-        x: 5
-        y: 6
+s:
+    a: 20
+    a1: 29
     estagio: loop
-    l: *id001
-    r: 11
-soma:
-    breakpoint: 5
-    x: 5
-    y: 6
+    x: 9
