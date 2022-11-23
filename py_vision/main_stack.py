@@ -13,16 +13,20 @@ class MainStack:
     iteration = 0
     
     @staticmethod
-    def add(name:str):
-        MainStack.pointers[-1][name] ={}
-        MainStack.pointers.append(MainStack.pointers[-1][name])
-        
+    def add_pointer():
+        MainStack.pointers.append(None)
+        pass 
+
+    def set_last_pointer_value(name:str,stack:dict):
+        MainStack.pointers[-2][name] = stack
+        MainStack.pointers[-1] = stack
 
     @staticmethod
     def pop(name:str):
-        del MainStack.pointers[-1][name]
-        MainStack.pointers.pop(-1)
-        print(name)
+        
+        #MainStack.pointers.pop(-1)
+        #del MainStack.pointers[-1][name]
+        pass 
         
     @staticmethod
     def render() -> None:

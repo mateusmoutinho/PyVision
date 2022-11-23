@@ -15,8 +15,9 @@ class Stack:
         self._stack_frame = stack_frame
     
         self._ignore = ignore
-        MainStack.add(self._name)
-
+        MainStack.add_pointer()
+        self.render()
+        
     def render(self) -> List[Any]:
         
         if MainStack.production:return
@@ -34,12 +35,13 @@ class Stack:
                 formated_locals.pop(x)
                 continue
 
-        MainStack.stack[-1] = formated_locals
+        MainStack.set_last_pointer_value(self._name,formated_locals)
         MainStack.render()
+    
 
 
 
     def __del__(self):
         if MainStack.production:return
-        MainStack.pop(self._name)
-        MainStack.render()
+        #MainStack.pop(self._name)
+        #MainStack.render()

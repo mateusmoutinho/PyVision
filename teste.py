@@ -14,7 +14,7 @@ def format_list():
     for x in range(10):
         estagio = 'loop'
         a = 20
-        a1 = soma(a,10)
+        #a1 = soma(a,10)
         format_list.render()
 
     
