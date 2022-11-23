@@ -4,20 +4,20 @@ import inspect
 def soma(x,y):
 
     soma = Stack(inspect.currentframe())
-    soma.breakpoint()
+    soma.render()
     return x+y
 
 def format_list():
     estagio = 'entrada'
     
-    s = Stack( inspect.currentframe())
+    format_list = Stack( inspect.currentframe())
     for x in range(10):
         estagio = 'loop'
         a = 20
         a1 = soma(a,10)
-        s.render_and_sleep(1)
+        format_list.render()
 
     
-#MainStack.filetipe = 'json'
+MainStack.filetipe = 'json'
 format_list()
 

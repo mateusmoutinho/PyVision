@@ -15,9 +15,7 @@ class Stack:
         self._stack_frame = stack_frame
     
         self._ignore = ignore
-        MainStack.pointers[-1][self._name] ={}
-        MainStack.pointers.append(MainStack.pointers[-1][self._name])
-
+        MainStack.add(self._name)
 
     def render(self) -> List[Any]:
         
@@ -43,7 +41,5 @@ class Stack:
 
     def __del__(self):
         if MainStack.production:return
-        try:
-            del MainStack.stack[self._name]
-        except:pass
-        #MainStack.render()
+        MainStack.pop(self._name)
+        MainStack.render()

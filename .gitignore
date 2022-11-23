@@ -5,7 +5,7 @@ __pycache__/
 formatacao.py
 # C extensions
 *.so
-
+stack
 # Distribution / packaging
 .Python
 build/
