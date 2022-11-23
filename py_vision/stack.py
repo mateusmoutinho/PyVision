@@ -6,6 +6,7 @@ from types import FrameType
 from typing import Any,List
 import time 
 import copy
+
 class Stack:
 
     def __init__(self,stack_frame:FrameType,ignore:list=[]) -> None:
@@ -14,13 +15,14 @@ class Stack:
         self._stack_frame = stack_frame
     
         self._ignore = ignore
-        MainStack.stack[self._name] ={}
-
+        MainStack.pointers[-1][self._name] ={}
+        MainStack.pointers.append(MainStack.pointers[-1][self._name])
 
 
     def render(self) -> List[Any]:
         
         if MainStack.production:return
+
         local_vars   = dict(self._stack_frame.f_locals)
         formated_locals = copy.copy(local_vars)
         
@@ -34,32 +36,9 @@ class Stack:
                 formated_locals.pop(x)
                 continue
 
-        MainStack.stack[self._name] = formated_locals
+        MainStack.stack[-1] = formated_locals
         MainStack.render()
 
-
-
-    def sleep(self,seconds:float) -> None:
-        if MainStack.production:return
-        time.sleep(seconds)
-   
-    def render_and_sleep(self,seconds:float):
-        self.render()
-        self.sleep(seconds)
-    
-    def breakpoint(self):
-
-        #MainStack.stack[self._name]
-        if MainStack.production:return
-        self.render()
-        line = inspect.currentframe().f_back.f_lineno
-        MainStack.stack[self._name]["breakpoint"] = line
-        MainStack.render()
-        r = input(f'type b to break on line {line}: ')
-        if r == 'b':
-            raise Exception('breakpoint')
-        del MainStack.stack[self._name]["breakpoint"]
-        MainStack.render()
 
 
     def __del__(self):
