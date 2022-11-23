@@ -18,13 +18,13 @@ class MainStack:
         pass 
 
     def set_last_pointer_value(name:str,stack:dict):
-        del MainStack.pointers[-2][name]  
-        MainStack.pointers[-2][name] = stack
         MainStack.pointers[-1] = stack
+        MainStack.pointers[-2][name] = stack
+
 
     @staticmethod
     def pop(name:str):
-        del MainStack.pointers[-1]
+        #del MainStack.pointers[-1]
         
         #del MainStack.pointers[-2][name]        
         pass 
