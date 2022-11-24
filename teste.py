@@ -1,4 +1,4 @@
-from py_vision2 import *
+from py_vision import *
 import inspect
 
 def imprime(vezes):
@@ -11,8 +11,6 @@ def imprime(vezes):
 
 def impprime_num(num:int):
     Stack.add_frame(currentframe())
-
-    
     print('imprimindo pela {} vez'.format(num))
     Stack.pop_frame(currentframe())
 
