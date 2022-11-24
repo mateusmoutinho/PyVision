@@ -5,6 +5,7 @@ import time
 import shutil
 from types import FrameType
 from py_vision.introspect import get_var_name,generate_frame_dict
+
 class MainStack:
     frames = []   
     name = "stack"
@@ -23,21 +24,16 @@ class MainStack:
             'name':get_var_name(frame)
         })
 
-    @staticmethod
-    def remove_unexistent_frames():
-        print('iteration----------------')
-        for frame in MainStack.frames:
-            print(frame)
 
     @staticmethod
     def generate_frames_dict():
-        MainStack.remove_unexistent_frames()
         frames_dict = {}
         last_dict = frames_dict
+        
         for f in MainStack.frames:
-    
             last_dict[f['name']] = generate_frame_dict(f['frame'])
             last_dict = last_dict[f['name']]
+        
         return frames_dict
 
 
