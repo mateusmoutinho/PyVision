@@ -6,9 +6,9 @@ def render_file(line:int):
         #copy the stack{line}.json to stack.json
         shutil.copyfile(f'stack/stack{line}.json', 'stack.json')
 
-    elif Stack.filetipe == 'yaml':
+    elif Stack.filetipe == 'yml':
         #copy the stack{line}.yaml to stack.yaml
-        shutil.copyfile(f'stack/stack{line}.yaml', 'stack.yaml')
+        shutil.copyfile(f'stack/stack{line}.yml', 'stack.yaml')
 
 
 def exec_view():
@@ -28,10 +28,10 @@ def exec_view():
         elif action == "a":
             line -= 1
         
-        if line > size:
+        if line >= size:
             line = 0
 
-        if line < 0:
+        if line <= 0:
             line = 0
         render_file(line)
         
