@@ -10,6 +10,7 @@ def render_file(line:int):
         #copy the stack{line}.yaml to stack.yaml
         shutil.copyfile(f'stack/stack{line}.yaml', 'stack.yaml')
 
+
 def exec_view():
     if Stack.production:
         return

@@ -17,7 +17,8 @@ def formata_resposta(input:str, padrao:str) -> str:
                 'caracter': elemento,
                 'posicao': idx
             })
-     
+        Stack.render(currentframe())
+
     if len(letras_input) > len(letras_padrao):
         raise ValueError("O número de caracteres do input é maior que o número de caracteres do padrão")
 
@@ -30,6 +31,7 @@ def formata_resposta(input:str, padrao:str) -> str:
             raise ValueError("Entrada não corresponde ao padrão")
     
     for e in caracteres:
+        Stack.render(currentframe())
         if e['posicao'] < len(letras_input):
             letras_input.insert(e['posicao'], e['caracter'])
     letras_input = "".join(letras_input)
