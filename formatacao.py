@@ -1,4 +1,4 @@
-from py_vision import *
+from py_vision2 import *
 def formata_resposta(input:str, padrao:str) -> str:
     #removendo caractesres especiais
     Stack.add_frame(currentframe())

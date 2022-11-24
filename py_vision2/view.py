@@ -1,4 +1,4 @@
-from py_vision.stack import Stack
+from py_vision2.stack import Stack
 import shutil
 import os
 
