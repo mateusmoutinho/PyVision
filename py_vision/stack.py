@@ -1,23 +1,26 @@
 import yaml 
 import json 
 import os
+import copy
 import time
 import shutil
 from types import FrameType
 from py_vision.introspect import generate_frame_dict,get_function_name
 
 class Stack:
+    acumulated_frames = []
     frames = []   
-    name = "stack"
-    filetipe = "yml"
-    production = False
-    iteration = 0
+    filename = "stack"
+    write = True
+    acumulate = True
+    enable = True
     
-    shutil.rmtree(name,ignore_errors=True)
-    os.makedirs(name)
+
     
     @staticmethod
     def add_frame(frame:FrameType,ignore:list=[]):
+        if not Stack.enable:return 
+
         Stack.frames.append({
             "frame":frame,
             "ignore":ignore,
@@ -25,12 +28,14 @@ class Stack:
         })
         Stack.render(frame)
 
+    @staticmethod
     def pop_frame(line:int or FrameType =None):
+        if not Stack.enable:return 
         Stack.render(line)
         Stack.frames.pop()
     
     @staticmethod
-    def generate_frames_dict():
+    def generate_frames_dict()->dict:
         frames_dict = {}
         last_dict = frames_dict
         
@@ -39,29 +44,38 @@ class Stack:
             last_dict = last_dict[f['name']]
         
         return frames_dict
-
+    
 
     @staticmethod
-    def render(line:int or FrameType =None) -> None:
- 
+    def generate_frames_list()->list:
+        if  Stack.acumulate:
+            return  Stack.acumulated_frames
+        else:
+            return  [Stack.generate_frames_dict()]
         
-        if Stack.production:return 
+        
+    @staticmethod
+    def dumps(type:str='json',ident:int=None):
+        if not Stack.enable:return 
+        if type == 'yaml':
+            return yaml.dump(Stack.generate_frames_list(),indent=ident)
+        elif type == 'json':
+            return json.dumps(Stack.generate_frames_list(),indent=ident)
+
+    @staticmethod
+    def dump(type:str='json',ident:int=None):
+        if not Stack.enable:return 
+        if not Stack.write:return
+        Stack.filename = Stack.filename.split('.')[0]
+        with open(f'{Stack.filename}.{type}','w') as f:
+                f.write(Stack.dumps(type,ident))
+
+    @staticmethod
+    def render(line:int or FrameType =None) -> None:        
+        if not Stack.enable:return 
         stack = Stack.generate_frames_dict()
         if isinstance(line,FrameType):
             line = line.f_lineno
         stack['line'] = line
-        name = f"stack/{Stack.name}{Stack.iteration}"
-        
-        if Stack.filetipe == "yml":
-            with open(f"{name}.yml","w") as file:
-                yaml.dump(stack,file,indent=4)
-
-        elif Stack.filetipe == "json":
-            with open(f"{name}.json","w") as file:
-                json.dump(stack,file,indent=4)
-        
-        else:
-            raise Exception('Filetipe not supported')
-    
-        Stack.iteration+=1
-    
+        if Stack.acumulate:
+            Stack.acumulated_frames.append(stack)
