@@ -12,8 +12,8 @@ class MainStack:
     production = False
     iteration = 0
     
-    shutil.rmtree('stack',ignore_errors=True)
-    os.makedirs('stack')
+    shutil.rmtree(name,ignore_errors=True)
+    os.makedirs(name)
     
     @staticmethod
     def add_pointer():
