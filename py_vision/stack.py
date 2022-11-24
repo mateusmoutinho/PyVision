@@ -23,11 +23,12 @@ class Stack:
             "ignore":ignore,
             'name':get_function_name(frame)
         })
-        Stack.render()
+        Stack.render(frame)
 
     def pop_frame():
         Stack.render()
         Stack.frames.pop()
+    
     @staticmethod
     def generate_frames_dict():
         frames_dict = {}
@@ -41,9 +42,14 @@ class Stack:
 
 
     @staticmethod
-    def render(line:int=None) -> None:
-        stack = Stack.generate_frames_dict()
+    def render(line:int or FrameType =None) -> None:
+ 
+        
         if Stack.production:return 
+        stack = Stack.generate_frames_dict()
+        if isinstance(line,FrameType):
+            line = line.f_lineno
+        stack['line'] = line
         name = f"stack/{Stack.name}{Stack.iteration}"
         
         if Stack.filetipe == "yml":
