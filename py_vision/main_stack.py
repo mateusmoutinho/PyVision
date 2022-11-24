@@ -3,10 +3,10 @@ import json
 import os
 import time
 import shutil
-
+from types import FrameType
+from py_vision.introspect import get_var_name,generate_frame_dict
 class MainStack:
-    stack = []
-    names = []
+    frames = []   
     name = "stack"
     filetipe = "yml"
     production = False
@@ -16,36 +16,44 @@ class MainStack:
     os.makedirs(name)
     
     @staticmethod
-    def add_stack(name:str):
-        MainStack.stack.append({})
-        MainStack.names.append(name)
+    def add_frame(frame:FrameType,ignore:list):
+        MainStack.frames.append({
+            "frame":frame,
+            "ignore":ignore,
+            'name':get_var_name(frame)
+        })
 
-    def set_last_stack_value(stack:dict):
-        MainStack.stack[-1] = stack
-    
     @staticmethod
-    def pop():
-        MainStack.stack.pop()
-        MainStack.names.pop()
-    
+    def remove_unexistent_frames():
+        print('iteration----------------')
+        for frame in MainStack.frames:
+            print(frame)
+
     @staticmethod
-    def generate_stack_dict()->dict:
-        total = range(len(MainStack.names))
-        print(total)
-        
+    def generate_frames_dict():
+        MainStack.remove_unexistent_frames()
+        frames_dict = {}
+        last_dict = frames_dict
+        for f in MainStack.frames:
+    
+            last_dict[f['name']] = generate_frame_dict(f['frame'])
+            last_dict = last_dict[f['name']]
+        return frames_dict
+
+
     @staticmethod
     def render() -> None:
-        MainStack.generate_stack_dict()
+        stack = MainStack.generate_frames_dict()
         if MainStack.production:return 
         name = f"stack/{MainStack.name}{MainStack.iteration}"
         
         if MainStack.filetipe == "yml":
             with open(f"{name}.yml","w") as file:
-                yaml.dump(MainStack.stack,file,indent=4)
+                yaml.dump(stack,file,indent=4)
 
         elif MainStack.filetipe == "json":
             with open(f"{name}.json","w") as file:
-                json.dump(MainStack.stack,file,indent=4)
+                json.dump(stack,file,indent=4)
         
         else:
             raise Exception('Filetipe not supported')

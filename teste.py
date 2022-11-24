@@ -5,7 +5,6 @@ def soma(x,y):
 
     soma = Stack(inspect.currentframe())
     #soma.render()
-    soma.close()
     return x+y
     
 def format_list():
@@ -13,10 +12,10 @@ def format_list():
     estagio = 'entrada'
     estagio = 'loop'
     a = 20
-    a1 = soma(a,10)
+    for x in range(3):
+        a1 = soma(2,10)
     format_list.render()
 
-    format_list.close()
 
     
 MainStack.filetipe = 'json'
