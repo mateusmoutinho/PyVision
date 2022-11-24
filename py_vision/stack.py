@@ -5,7 +5,7 @@ import copy
 import time
 import shutil
 from types import FrameType
-from py_vision2.introspect import generate_frame_dict,get_function_name
+from py_vision.introspect import generate_frame_dict,get_function_name
 
 class Stack:
     acumulated_frames = []
