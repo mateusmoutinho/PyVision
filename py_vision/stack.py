@@ -1,10 +1,5 @@
 import yaml 
 import json 
-import os
-import copy
-import time
-import shutil
-from types import FrameType
 from py_vision.introspect import generate_frame_dict,get_function_name
 
 class Stack:
@@ -15,24 +10,6 @@ class Stack:
     acumulate = True
     enable = True
     
-
-    #dealing with list of frames
-    @staticmethod
-    def add_frame(frame:FrameType,ignore:list=[]):
-        if not Stack.enable:return 
-        Stack.frames.append({
-            "frame":frame,
-            "ignore":ignore,
-            'name':get_function_name(frame)
-        })
-        Stack.render(frame)
-
-    
-    @staticmethod
-    def pop_frame(line:int or FrameType =None):
-        if not Stack.enable:return 
-        Stack.render(line)
-        Stack.frames.pop()
 
 
     @staticmethod
@@ -71,12 +48,3 @@ class Stack:
         with open(f'{Stack.filename}.{type}','w') as f:
                 f.write(Stack.dumps(type,ident))
 
-    @staticmethod
-    def render(line:int or FrameType =None) -> None:        
-        if not Stack.enable:return 
-        stack = Stack.generate_frames_dict()
-        if isinstance(line,FrameType):
-            line = line.f_lineno
-        stack['line'] = line
-        if Stack.acumulate:
-            Stack.acumulated_frames.append(stack)
