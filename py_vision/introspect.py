@@ -2,18 +2,8 @@ from types import FrameType
 import copy
 import inspect
 
-def get_var_name(frame:FrameType=None):
-    try:
-        line = frame.f_lineno
-        code = inspect.getframeinfo(frame).code_context[0]
-        var = code.split('=')[0].strip()
-        if var.isidentifier():
-            return var
-        else:
-            raise ValueError
-    except Exception as e:
-        raise Exception("You need to reference a variable to receive the answer")
-    
+def get_function_name(frame:FrameType):
+    return frame.f_code.co_name
 
 def generate_frame_dict(frame:FrameType):
     local_vars   = dict(frame.f_locals)

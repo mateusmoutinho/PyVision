@@ -4,9 +4,9 @@ import os
 import time
 import shutil
 from types import FrameType
-from py_vision.introspect import get_var_name,generate_frame_dict
+from py_vision.introspect import generate_frame_dict,get_function_name
 
-class MainStack:
+class Stack:
     frames = []   
     name = "stack"
     filetipe = "yml"
@@ -17,20 +17,24 @@ class MainStack:
     os.makedirs(name)
     
     @staticmethod
-    def add_frame(frame:FrameType,ignore:list):
-        MainStack.frames.append({
+    def add_frame(frame:FrameType,ignore:list=[]):
+        Stack.frames.append({
             "frame":frame,
             "ignore":ignore,
-            'name':get_var_name(frame)
+            'name':get_function_name(frame)
         })
+        Stack.render()
 
+    def pop_frame():
+        Stack.frames.pop()
+        Stack.render()
 
     @staticmethod
     def generate_frames_dict():
         frames_dict = {}
         last_dict = frames_dict
         
-        for f in MainStack.frames:
+        for f in Stack.frames:
             last_dict[f['name']] = generate_frame_dict(f['frame'])
             last_dict = last_dict[f['name']]
         
@@ -39,20 +43,20 @@ class MainStack:
 
     @staticmethod
     def render() -> None:
-        stack = MainStack.generate_frames_dict()
-        if MainStack.production:return 
-        name = f"stack/{MainStack.name}{MainStack.iteration}"
+        stack = Stack.generate_frames_dict()
+        if Stack.production:return 
+        name = f"stack/{Stack.name}{Stack.iteration}"
         
-        if MainStack.filetipe == "yml":
+        if Stack.filetipe == "yml":
             with open(f"{name}.yml","w") as file:
                 yaml.dump(stack,file,indent=4)
 
-        elif MainStack.filetipe == "json":
+        elif Stack.filetipe == "json":
             with open(f"{name}.json","w") as file:
                 json.dump(stack,file,indent=4)
         
         else:
             raise Exception('Filetipe not supported')
     
-        MainStack.iteration+=1
+        Stack.iteration+=1
     

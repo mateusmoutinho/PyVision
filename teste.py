@@ -1,23 +1,25 @@
-from py_vision import Stack,MainStack
+from py_vision import Stack
 import inspect
 
-def soma(x,y):
+def imprime(vezes):
+    Stack.add_frame(inspect.currentframe())
+    if vezes == 0:
+        return
+    print('imprimindo pela {} vez'.format(vezes))
+    imprime(vezes-1)
+    Stack.pop_frame()
 
-    soma = Stack(inspect.currentframe())
-    #soma.render()
-    return x+y
     
 def format_list():
-    format_list = Stack(inspect.currentframe())
+    Stack.add_frame(inspect.currentframe())
     estagio = 'entrada'
     estagio = 'loop'
-    a = 20
-    for x in range(3):
-        a1 = soma(2,10)
-    format_list.render()
-
+    imprime(10)    
+    Stack.pop_frame()
 
     
-MainStack.filetipe = 'json'
+
+    
+Stack.filetipe = 'json'
 format_list()
 
