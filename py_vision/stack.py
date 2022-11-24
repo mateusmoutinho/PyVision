@@ -44,6 +44,7 @@ class Stack:
         stack['line'] = line
         if Stack.acumulate:
             Stack.acumulated_frames.append(stack)
+       
 
     @staticmethod
     def generate_frames_dict()->dict:
@@ -72,6 +73,7 @@ class Stack:
             return yaml.dump(Stack.generate_frames_list(),indent=ident)
         elif type == 'json':
             return json.dumps(Stack.generate_frames_list(),indent=ident)
+
 
     @staticmethod
     def dump(type:str='json',ident:int=None):

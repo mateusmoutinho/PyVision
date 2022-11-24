@@ -13,7 +13,7 @@ def format_list():
     estagio = 'entrada'
     estagio = 'loop'
     
-    for x in range:
+    for x in range(10):
         impprime_num(10)
         PLOT(currentframe())
 
