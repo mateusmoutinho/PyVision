@@ -25,8 +25,8 @@ class Stack:
         })
         Stack.render(frame)
 
-    def pop_frame():
-        Stack.render()
+    def pop_frame(line:int or FrameType =None):
+        Stack.render(line)
         Stack.frames.pop()
     
     @staticmethod

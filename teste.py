@@ -7,10 +7,14 @@ def imprime(vezes):
         return
     print('imprimindo pela {} vez'.format(vezes))
     imprime(vezes-1)
-    Stack.pop_frame()
+    Stack.pop_frame(inspect.currentframe())
 
 def impprime_num(num:int):
+    Stack.add_frame(inspect.currentframe())
+
+
     print('imprimindo pela {} vez'.format(num))
+    Stack.pop_frame(inspect.currentframe())
 
 def format_list():
     Stack.add_frame(inspect.currentframe())
@@ -21,7 +25,7 @@ def format_list():
         impprime_num(x)
         Stack.render(inspect.currentframe())  
 
-    Stack.pop_frame()
+    Stack.pop_frame(inspect.currentframe())
 
     
 
