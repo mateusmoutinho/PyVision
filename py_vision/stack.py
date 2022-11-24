@@ -26,9 +26,8 @@ class Stack:
         Stack.render()
 
     def pop_frame():
-        Stack.frames.pop()
         Stack.render()
-
+        Stack.frames.pop()
     @staticmethod
     def generate_frames_dict():
         frames_dict = {}
@@ -42,7 +41,7 @@ class Stack:
 
 
     @staticmethod
-    def render() -> None:
+    def render(line:int=None) -> None:
         stack = Stack.generate_frames_dict()
         if Stack.production:return 
         name = f"stack/{Stack.name}{Stack.iteration}"

@@ -10,6 +10,7 @@ def imprime(vezes):
     Stack.pop_frame()
 
     
+    
 def format_list():
     Stack.add_frame(inspect.currentframe())
     estagio = 'entrada'
