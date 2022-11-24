@@ -5,8 +5,8 @@ import time
 import shutil
 
 class MainStack:
-    stack = {}
-    pointers = [stack]
+    stack = []
+    names = []
     name = "stack"
     filetipe = "yml"
     production = False
@@ -16,24 +16,26 @@ class MainStack:
     os.makedirs(name)
     
     @staticmethod
-    def add_pointer():
-        MainStack.pointers.append(None)
-        pass 
+    def add_stack(name:str):
+        MainStack.stack.append({})
+        MainStack.names.append(name)
 
-    def set_last_pointer_value(name:str,stack:dict):
-        MainStack.pointers[-1] = stack
-        MainStack.pointers[-2][name] = stack
-
+    def set_last_stack_value(stack:dict):
+        MainStack.stack[-1] = stack
     
-
     @staticmethod
-    def pop(name:str):
-        del MainStack.pointers[-2][name]        
-        del MainStack.pointers[-1]
-
+    def pop():
+        MainStack.stack.pop()
+        MainStack.names.pop()
+    
+    @staticmethod
+    def generate_stack_dict()->dict:
+        total = range(len(MainStack.names))
+        print(total)
         
     @staticmethod
     def render() -> None:
+        MainStack.generate_stack_dict()
         if MainStack.production:return 
         name = f"stack/{MainStack.name}{MainStack.iteration}"
         

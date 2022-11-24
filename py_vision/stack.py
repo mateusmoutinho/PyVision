@@ -1,7 +1,7 @@
 
 import inspect
 from py_vision.introspect import get_var_name
-from py_vision.main_stack import MainStack
+from py_vision.main_stack import *
 from types import FrameType
 from typing import Any,List
 import time 
@@ -15,7 +15,7 @@ class Stack:
         self._stack_frame = stack_frame
     
         self._ignore = ignore
-        MainStack.add_pointer()
+        MainStack.add_stack(self._name)
         self.render()
 
     def render(self) -> List[Any]:
@@ -35,13 +35,16 @@ class Stack:
                 formated_locals.pop(x)
                 continue
 
-        MainStack.set_last_pointer_value(self._name,formated_locals)
+        MainStack.set_last_stack_value(formated_locals)
         MainStack.render()
     
 
 
 
-    def __del__(self):
+    def close(self):
+        
         if MainStack.production:return
-        MainStack.pop(self._name)
+        
+        MainStack.pop()
+
         MainStack.render()
