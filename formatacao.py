@@ -1,15 +1,15 @@
-from py_vision import Stack,MainStack
-
+from py_vision import *
 def formata_resposta(input:str, padrao:str) -> str:
     #removendo caractesres especiais
-    s = Stack()
+    Stack.add_frame(currentframe())
+
     letras_input = [letra for letra in input if letra.isalpha() or letra.isalnum()]
     letras_padrao = []
     caracteres = []  
-    s.render(locals())
+
 
     for idx,elemento in enumerate(padrao):
-
+        Stack.render(currentframe())
         if elemento in ['N','L']:
             letras_padrao.insert(idx, elemento)
         else:
@@ -17,7 +17,7 @@ def formata_resposta(input:str, padrao:str) -> str:
                 'caracter': elemento,
                 'posicao': idx
             })
-        s.breakpoint(locals())
+     
     if len(letras_input) > len(letras_padrao):
         raise ValueError("O número de caracteres do input é maior que o número de caracteres do padrão")
 
@@ -43,3 +43,4 @@ def formata_resposta(input:str, padrao:str) -> str:
 
 
 formata_resposta('123456789','NNN.NNN.NNN-NN')
+exec_view()

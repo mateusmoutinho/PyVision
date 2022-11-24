@@ -1,4 +1,4 @@
-from py_vision import Stack
+from py_vision import *
 import inspect
 
 def imprime(vezes):
@@ -21,6 +21,7 @@ def format_list():
     estagio = 'entrada'
     estagio = 'loop'
     
+
     for x in range(10):
         impprime_num(x)
         Stack.render(inspect.currentframe())  
@@ -32,4 +33,6 @@ def format_list():
     
 Stack.filetipe = 'json'
 format_list()
+exec_view()
+
 
