@@ -26,5 +26,4 @@ try:
     format_list()
 except Exception as e:
     pass 
-
-Stack.dump(ident=4)
+exec_view()
