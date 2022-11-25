@@ -26,4 +26,4 @@ try:
     format_list()
 except Exception as e:
     pass 
-exec_view('stack.yaml')
+Stack.exec_view('stack.yaml')
