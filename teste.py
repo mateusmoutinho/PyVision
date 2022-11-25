@@ -3,9 +3,9 @@ import inspect
 
 
 def impprime_num(num:int):
-    START(currentframe())
+    #START(currentframe())
     print('imprimindo pela {} vez'.format(num))
-    END(currentframe())
+    #END(currentframe())
 
 
 def format_list():
@@ -14,7 +14,7 @@ def format_list():
     estagio = 'loop'
     
     for x in range(10):
-        impprime_num(10)
+        impprime_num(x)
         PLOT(currentframe())
 
     END(currentframe())
@@ -26,4 +26,4 @@ try:
     format_list()
 except Exception as e:
     pass 
-exec_view()
+exec_view('stack.yaml')

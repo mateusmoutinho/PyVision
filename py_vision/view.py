@@ -3,7 +3,10 @@ import keyboard
 import shutil
 import os
 import time
-
+import copy
+import json
+import yaml
+import sys
 class Key:
     last_time_pressed = time.time()
     @staticmethod
@@ -17,11 +20,12 @@ class Key:
                 return key 
             
 
-def exec_view():
+def exec_view(filename:str):
     if not Stack.enable:return 
     if not Stack.write:return
+    type = filename.split('.')[-1]
     generated_list = Stack.generate_frames_list()
-    possibles = range(len(generated_list))
+    size =(len(generated_list))
     current_frame = 0 
     NEXT = ['right','d']
     PREVIEWS = ['left','a']
@@ -32,8 +36,20 @@ def exec_view():
             current_frame+=1
         if key in PREVIEWS:
             current_frame-=1
+        if key == 'esc':
+            sys.exit('finishing')
         
-        if current_frame not in possibles:
+        if current_frame >=size:
             current_frame = 0 
-        
-         
+
+        if current_frame < 0:
+            current_frame = size-1
+
+        iteration = copy.deepcopy(generated_list[current_frame])
+        iteration['segment'] = current_frame
+        if type == 'json':
+            with open(filename,'w') as arq:
+                json.dump(iteration,arq,indent=4)
+        if type =='yaml':
+             with open(filename,'w') as arq:
+                yaml.dump(iteration,arq,indent=4)

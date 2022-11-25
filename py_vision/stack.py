@@ -10,7 +10,6 @@ from py_vision.introspect import generate_frame_dict,get_function_name
 class Stack:
     acumulated_frames = []
     frames = []   
-    filename = "stack"
     write = True
     acumulate = True
     enable = True
@@ -73,13 +72,16 @@ class Stack:
             return yaml.dump(Stack.generate_frames_list(),indent=ident)
         elif type == 'json':
             return json.dumps(Stack.generate_frames_list(),indent=ident)
+        else:
+            raise Exception('type not valid')
 
 
     @staticmethod
-    def dump(type:str='json',ident:int=None):
+    def dump(filename:str='stack.yml',ident:int=None):
         if not Stack.enable:return 
         if not Stack.write:return
-        Stack.filename = Stack.filename.split('.')[0]
-        with open(f'{Stack.filename}.{type}','w') as f:
+        type = filename.split('.')[-1]
+        with open(filename,'w') as f:
                 f.write(Stack.dumps(type,ident))
+
 
