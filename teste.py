@@ -6,8 +6,8 @@ def imprimi(y):
     Stack.end()
 
 def imprim2(y):
-    
-    Stack.start(currentframe())
+    v = [10,20,30]
+    Stack.start(currentframe(),ignore=['v'])
     print('segunda funcao',y)
     Stack.end()
 def teste():

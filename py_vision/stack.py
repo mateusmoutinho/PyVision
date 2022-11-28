@@ -57,7 +57,7 @@ class Stack:
         last_dict = frames_dict
         
         for f in Stack.frames:
-            last_dict[f['name']] = generate_frame_dict(f['frame'])
+            last_dict[f['name']] = generate_frame_dict(f['frame'],f['ignore'])
             last_dict = last_dict[f['name']]
         
         return frames_dict
