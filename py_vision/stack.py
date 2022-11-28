@@ -12,12 +12,16 @@ class Stack:
     write = True
     acumulate = True
     enable = True
-    
+    disable_next = False
 
     #dealing with list of frames
+
+
     @staticmethod
     def start(frame:FrameType,ignore:list=[]):
         if not Stack.enable:return 
+        if Stack.disable_next:return
+
         Stack.frames.append({
             "frame":frame,
             "ignore":ignore,
@@ -29,6 +33,9 @@ class Stack:
     @staticmethod
     def end(line:int or FrameType =None):
         if not Stack.enable:return 
+        if Stack.disable_next:
+            Stack.disable_next = False
+            return
         Stack.plot(line)
         Stack.frames.pop()
 
@@ -117,6 +124,9 @@ class Stack:
             if type == 'json':
                 with open(filename,'w') as arq:
                     json.dump(iteration,arq,indent=4)
-            if type =='yaml':
+            elif type =='yaml':
                 with open(filename,'w') as arq:
                     yaml.dump(iteration,arq,indent=4)
+            else:
+                print('type not valid')
+                exit()
