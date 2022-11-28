@@ -94,6 +94,8 @@ class Stack:
         current_frame = 0 
         NEXT = ['right','d']
         PREVIEWS = ['left','a']
+        print('type >= for next frame < for previews frame or esc to exit:')
+
         while True:
             
             key = Key.get_key()
