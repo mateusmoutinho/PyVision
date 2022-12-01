@@ -41,7 +41,10 @@ def main():
     stack = get_stack_dict(stack_file)
 
     index = 0
-    print('press (ctrl,>) to next and (ctrl,<) to back  (ctrl,r) to repeat or  (ctrl,esc) to exit')
+    print("""press: (shitf + <) to previews breakpoint
+press: (shitf + <) to next breakpoint 
+press: (shitf + k) to restart 
+press: esc to exit""")
     while True:
         key = Key.get_key()
         if key == 'esc':
@@ -50,7 +53,7 @@ def main():
             index += 1
         elif key == 'left':
             index -= 1
-        elif key == 'r':
+        elif key == 'k':
             system(comand)
             stack = get_stack_dict(stack_file)
         else:
@@ -69,7 +72,7 @@ def main():
             with open(out,'w') as file:
                 file.write(yaml.dump(stack[index],indent=4))
 
-    
+    print('finished')
 
 if __name__ == '__main__':
     main()

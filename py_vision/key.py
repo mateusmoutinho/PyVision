@@ -13,8 +13,11 @@ class Key:
             #verify if ctrl is pressed 
             
             if not is_pressed('ctrl'):
+                key = read_key()
+                if key == 'esc':
+                    return 'esc'
                 continue
-                 
+
             key = read_key()
             now = time()
             if now > Key.last_time_pressed + LIMIT:
