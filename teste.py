@@ -9,11 +9,10 @@ class Carro:
         self._freio = 0
     
     def acelerar(self,stack:SubStack, aceleracao:int):
-        s2 = stack.sub_stack(currentframe())
         self._aceleracao = aceleracao
         self._velocidade += self._aceleracao
         self._freio = 0
-        s2.plot()
+   
 def main(stack:MainStack):
     s1 = stack.sub_stack(currentframe())
     c = Carro('vermelho',4)
