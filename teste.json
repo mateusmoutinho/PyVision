@@ -1,0 +1,119 @@
+[
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py"
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py"
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 0
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 1
+        },
+        "imprimi": {
+            "valor": 0
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 2
+        },
+        "imprimi": {
+            "valor": 1
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 3
+        },
+        "imprimi": {
+            "valor": 2
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 4
+        },
+        "imprimi": {
+            "valor": 3
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 5
+        },
+        "imprimi": {
+            "valor": 4
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 6
+        },
+        "imprimi": {
+            "valor": 5
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 7
+        },
+        "imprimi": {
+            "valor": 6
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 8
+        },
+        "imprimi": {
+            "valor": 7
+        }
+    },
+    {
+        "__name__": "__main__",
+        "__annotations__": {},
+        "__file__": "C:\\Users\\Dados\\Documents\\GitHub\\StackViewer\\teste.py",
+        "teste": {
+            "x": 9
+        },
+        "imprimi": {
+            "valor": 8
+        }
+    }
+]

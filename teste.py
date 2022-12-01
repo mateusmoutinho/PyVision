@@ -1,12 +1,14 @@
-from py_vision import Stack
+from py_vision import *
 def imprimi(stack,valor):
-    print(valor)
+    s2 = stack.sub_stack(currentframe())
+    #rint(valor)
 
 def teste(stack):
-    s1 = stack.sub_stack(stack._frame)
+    s1 = stack.sub_stack(currentframe())
     for x in range(10):
-        print(x)
+        imprimi(stack,x)
     
 
-s = Stack()
+s = Stack(currentframe())
 teste(s)
+s.dump('teste.json')
