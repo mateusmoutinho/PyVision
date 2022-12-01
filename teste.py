@@ -6,9 +6,9 @@ def imprimi(stack,valor):
 def teste(stack):
     s1 = stack.sub_stack(currentframe())
     for x in range(10):
-        imprimi(stack,x)
+        imprimi(s1,x)
     
 
-s = Stack(currentframe())
+s = MainStack()
 teste(s)
 s.dump('teste.json')
