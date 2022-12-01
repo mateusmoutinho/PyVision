@@ -41,18 +41,21 @@ def main():
     stack = get_stack_dict(stack_file)
 
     index = 0
-    print('press > to next and < to back r to repeat or esc to exit')
+    print('press (ctrl,>) to next and (ctrl,<) to back  (ctrl,r) to repeat or  (ctrl,esc) to exit')
     while True:
         key = Key.get_key()
         if key == 'esc':
             break
-        if key == 'right':
+        elif key == 'right':
             index += 1
-        if key == 'left':
+        elif key == 'left':
             index -= 1
-        if key == 'r':
+        elif key == 'r':
             system(comand)
             stack = get_stack_dict(stack_file)
+        else:
+            continue
+
         if index < 0:
             index = len(stack)-1
             
