@@ -13,7 +13,6 @@ class SubStack:
         self._frame = frame
         self._mother_stack = mother_stack
         self._itens = []
-        self._plotages = []
         self._name = get_function_name(frame)
         self.plot()
 
