@@ -7,7 +7,7 @@ class Key:
     last_time_pressed = time()
 
     @staticmethod
-    def get_key():
+    def get_key()->str:
         LIMIT = 0.25
         while True:
             key = read_key()

@@ -8,8 +8,7 @@ setup(
    author_email='mateusmoutinho01@gmail.com',
 
    packages=[
-         'py_vision',
-        'py_vision.view',
+         'py_vision'
    ],
    url='',
    description='Library to visaulize the execution of a program',
