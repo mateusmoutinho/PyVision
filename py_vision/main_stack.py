@@ -25,8 +25,11 @@ class MainStack:
             current_frame_dict[stack._name] =stack._render()
         return current_frame_dict    
     
-    def plot(self):
-        self._plotages.append(self._render())
+    def plot(self,line:int=None):
+        render_result = self._render()
+        render_result['line'] = line
+        self._plotages.append(render_result)
+    
     
     def dump(self,filename:str,ident=4):
         format = filename.split('.')[-1]

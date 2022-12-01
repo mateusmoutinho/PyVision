@@ -14,7 +14,7 @@ class SubStack:
         self._mother_stack = mother_stack
         self._itens = []
         self._name = get_function_name(frame)
-        self.plot()
+        self.plot(frame)
 
     def sub_stack(self,frame:FrameType):
         self._itens.append(SubStack(frame=frame,mother_stack=self))
@@ -27,6 +27,8 @@ class SubStack:
             current_frame_dict[stack._name] =stack._render()
         return current_frame_dict    
     
-    def plot(self):
-        self._mother_stack.plot()
+    def plot(self,line:int or FrameType=None):
+        if isinstance(line,FrameType):
+            line = line.f_lineno
+        self._mother_stack.plot(line)
 

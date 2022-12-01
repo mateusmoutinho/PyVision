@@ -7,8 +7,8 @@ def teste(stack:MainStack):
     s1 = stack.sub_stack(currentframe())
     r = 29 
     x = 10
-    s1.plot()
-    
+    s1.plot(currentframe())
+
     for x in range(10):
         imprimi(s1,x)
     
