@@ -2,18 +2,8 @@ from cli_args_system import Args
 from py_vision.key import Key
 import json
 import yaml
-
-def main():
-
-    args = Args()
-    comand = args.flag_str('comand','c')
-    if not comand:
-        print('Comand not found')
-        return
-    stack_file = args.flag_str('stack_file','s')
-    if not stack_file:
-        print('Stack file not found')
-        return
+from os import system
+def get_stack_dict(stack_file:str)->dict:
     format = stack_file.split('.')[-1]
     try:
         with open(stack_file,'r') as file:
@@ -26,12 +16,55 @@ def main():
 
     elif format == 'yaml':
         stack = yaml.load(stack)
+    return stack
 
+
+def main():
+    #getting comands
+    args = Args()
+    comand = args.flag_str('comand','c')
+    if not comand:
+        print('Comand not found')
+        return
+    stack_file = args.flag_str('stack_file','s')
+    if not stack_file:
+        print('Stack file not found')
+        return
+    out = args.flag_str('out','o')
+    if not out:
+        out = 'stack_point.json'
+      
+    out_format = out.split('.')[-1]
+    #executing comand
+
+    system(comand)
+    stack = get_stack_dict(stack_file)
+
+    index = 0
+    print('press > to next and < to back r to repeat or esc to exit')
     while True:
         key = Key.get_key()
         if key == 'esc':
             break
+        if key == 'right':
+            index += 1
+        if key == 'left':
+            index -= 1
+        if key == 'r':
+            system(comand)
+            stack = get_stack_dict(stack_file)
+        if index < 0:
+            index = len(stack)-1
+            
+        if index >= len(stack):
+            index = 0
         
+        if out_format == 'json':
+            with open(out,'w') as file:
+                file.write(json.dumps(stack[index],indent=4))
+        elif out_format == 'yaml':
+            with open(out,'w') as file:
+                file.write(yaml.dump(stack[index],indent=4))
 
     
 
