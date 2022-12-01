@@ -1,6 +1,6 @@
 [
     {
-        "line": 17
+        "line": 18
     },
     {
         "main": {
@@ -12,7 +12,7 @@
                 "_freio": 0
             }
         },
-        "line": null
+        "line": 12
     },
     {
         "main": {
@@ -22,6 +22,16 @@
                 "_velocidade": 10,
                 "_aceleracao": 10,
                 "_freio": 0
+            },
+            "acelerar": {
+                "self": {
+                    "cor": "vermelho",
+                    "rodas": 4,
+                    "_velocidade": 10,
+                    "_aceleracao": 10,
+                    "_freio": 0
+                },
+                "aceleracao": 10
             }
         },
         "line": null
