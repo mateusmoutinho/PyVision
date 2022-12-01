@@ -1,18 +1,26 @@
 from py_vision import *
-def imprimi(stack:SubStack,valor):
-    s2 = stack.sub_stack(currentframe())
-    #rint(valor)
 
-def teste(stack:MainStack):
-    s1 = stack.sub_stack(currentframe())
-    r = 29 
-    x = 10
-    s1.plot(currentframe())
-
-    for x in range(10):
-        imprimi(s1,x)
+class Carro:
+    def __init__(self,cor:str,rodas:int) -> None:
+        self.cor = cor
+        self.rodas = rodas
+        self._velocidade = 0
+        self._aceleracao = 0
+        self._freio = 0
     
+    def acelerar(self,aceleracao:int):
+        self._aceleracao = aceleracao
+        self._velocidade += self._aceleracao
+        self._freio = 0
+ 
+def main(stack:MainStack):
+    s1 = stack.sub_stack(currentframe())
+    c = Carro('vermelho',4)
+    s1.plot()
+    c.acelerar(10)
+    s1.plot()
+     
 
 s = MainStack()
-teste(s)
+main(s)
 s.dump('teste.json')

@@ -1,109 +1,29 @@
 [
     {
-        "line": 7
+        "line": 17
     },
     {
-        "teste": {
-            "r": 29,
-            "x": 10
-        },
-        "line": 10
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 0
-        },
-        "line": 3
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 1,
-            "imprimi": {
-                "valor": 0
+        "main": {
+            "c": {
+                "cor": "vermelho",
+                "rodas": 4,
+                "_velocidade": 0,
+                "_aceleracao": 0,
+                "_freio": 0
             }
         },
-        "line": 3
+        "line": null
     },
     {
-        "teste": {
-            "r": 29,
-            "x": 2,
-            "imprimi": {
-                "valor": 1
+        "main": {
+            "c": {
+                "cor": "vermelho",
+                "rodas": 4,
+                "_velocidade": 10,
+                "_aceleracao": 10,
+                "_freio": 0
             }
         },
-        "line": 3
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 3,
-            "imprimi": {
-                "valor": 2
-            }
-        },
-        "line": 3
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 4,
-            "imprimi": {
-                "valor": 3
-            }
-        },
-        "line": 3
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 5,
-            "imprimi": {
-                "valor": 4
-            }
-        },
-        "line": 3
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 6,
-            "imprimi": {
-                "valor": 5
-            }
-        },
-        "line": 3
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 7,
-            "imprimi": {
-                "valor": 6
-            }
-        },
-        "line": 3
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 8,
-            "imprimi": {
-                "valor": 7
-            }
-        },
-        "line": 3
-    },
-    {
-        "teste": {
-            "r": 29,
-            "x": 9,
-            "imprimi": {
-                "valor": 8
-            }
-        },
-        "line": 3
+        "line": null
     }
 ]

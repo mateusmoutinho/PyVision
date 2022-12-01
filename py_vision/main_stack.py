@@ -1,5 +1,4 @@
 from py_vision.sub_stack import SubStack
-from py_vision.introspect import generate_frame_dict
 import yaml 
 import json 
 from types import FrameType
