@@ -1,14 +1,15 @@
 from typing import Any
 from types import FrameType
+from py_vision.base_stack import BaseStack
 
+class SubStack(BaseStack): 
 
-class SubStack: 
-
-    def __init__(self,frame:FrameType,mother_stack:'SubStack'=None) -> None:
+    def __init__(self,frame:FrameType,mother_stack:'SubStack'=None,enable:bool=True) -> None:
         self._frame = frame
         self._mother_stack = mother_stack
         self._itens = []
         self._name = frame.f_code.co_name
+        self._enable = enable
         self.plot(frame)
 
 
@@ -60,11 +61,9 @@ class SubStack:
         return current_frame_dict    
 
 
-    def sub_stack(self,frame:FrameType):
-        self._itens.append(SubStack(frame=frame,mother_stack=self))
-        return self._itens[-1]
 
     def plot(self,line:int or FrameType=None):
+        if not self._enable:return
         if isinstance(line,FrameType):
             line = line.f_lineno
         self._mother_stack.plot(line)
