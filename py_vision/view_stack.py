@@ -65,6 +65,7 @@ press: esc to exit""")
         if index >= len(stack):
             index = 0
         
+        
         if out_format == 'json':
             with open(out,'w') as file:
                 file.write(json.dumps(stack[index],indent=4))
