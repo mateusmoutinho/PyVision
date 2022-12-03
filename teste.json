@@ -1,11 +1,161 @@
 [
     {
-        "line": 3
+        "line": 11
     },
     {
         "main": {
-            "a": 1,
-            "b": 2
+            "x": 0
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 0,
+            "imprimi": {
+                "valor": 0
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 1
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 1,
+            "imprimi": {
+                "valor": 1
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 2
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 2,
+            "imprimi": {
+                "valor": 2
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 3
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 3,
+            "imprimi": {
+                "valor": 3
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 4
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 4,
+            "imprimi": {
+                "valor": 4
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 5
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 5,
+            "imprimi": {
+                "valor": 5
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 6
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 6,
+            "imprimi": {
+                "valor": 6
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 7
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 7,
+            "imprimi": {
+                "valor": 7
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 8
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 8,
+            "imprimi": {
+                "valor": 8
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 9
+        },
+        "line": 5
+    },
+    {
+        "main": {
+            "x": 9,
+            "imprimi": {
+                "valor": 9
+            }
+        },
+        "line": null
+    },
+    {
+        "main": {
+            "x": 9,
+            "r": 20
         },
         "line": null
     }

@@ -1,8 +1,17 @@
 from py_vision import *
+
+
+def imprimi(substack:SubStack,valor):
+    simprimi = substack.sub_stack(currentframe())
+    print(valor)
+    simprimi.plot()
+    simprimi.end()
+
 def main(stack:MainStack):
     smain = stack.sub_stack(currentframe())
-    a = 1
-    b = 2
+    for x in range(10):
+        imprimi(smain,x)
+    r = 20
     smain.plot()
 
 
