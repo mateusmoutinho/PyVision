@@ -9,6 +9,7 @@ setup(
 
    packages=[
          'py_vision'
+         'py_vision.stack'
    ],
    url='',
    description='Library to visaulize the execution of a program',
