@@ -2,23 +2,38 @@ from cli_args_system import Args
 from py_vision.key import Key
 import json
 import yaml
-from os import system
-def get_stack_dict(stack_file:str)->dict:
+from os import system,remove
+
+def get_stack_list(stack_file:str)->list:
     format = stack_file.split('.')[-1]
     try:
         with open(stack_file,'r') as file:
             stack = file.read()
     except FileNotFoundError:
         print('Stack file not found')
-        return
+        return []
     if format == 'json':
         stack = json.loads(stack)
 
     elif format == 'yaml':
         stack = yaml.load(stack)
+    if not isinstance(stack,list):
+        print('Stack file not valid')
+        return []
     return stack
 
-
+def restart(comand:str,stack_file:str, out:str):
+    try:
+        remove(stack_file)
+    except FileNotFoundError:
+        pass
+    try:
+        remove(out)
+    except FileNotFoundError:
+        pass
+    system(comand)
+    stack = get_stack_list(stack_file)
+    return stack
 def main():
     #getting comands
     args = Args()
@@ -37,8 +52,8 @@ def main():
     out_format = out.split('.')[-1]
     #executing comand
 
-    system(comand)
-    stack = get_stack_dict(stack_file)
+
+    stack = restart(comand,stack_file, out)
 
     index = 0
     print(
@@ -57,25 +72,29 @@ def main():
             index -= 1
         elif key == 's':
             print('restarting..')
-            system(comand)
-            stack = get_stack_dict(stack_file)
-        else:
-            continue
-        if not stack:continue
+            #delete stack and out   
+            stack = restart(comand,stack_file, out)
+
+   
 
         if index < 0:
             index = len(stack)-1
             
         if index >= len(stack):
             index = 0
-        
+
+        try:
+            out_dict = stack[index]
+        except IndexError:
+            out_dict = {}
+
         
         if out_format == 'json':
             with open(out,'w') as file:
-                file.write(json.dumps(stack[index],indent=4))
+                file.write(json.dumps(out_dict,indent=4))
         elif out_format == 'yaml':
             with open(out,'w') as file:
-                file.write(yaml.dump(stack[index],indent=4))
+                file.write(yaml.dump(out_dict,indent=4))
 
     print('finished')
 
