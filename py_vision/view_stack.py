@@ -43,7 +43,7 @@ def main():
     index = 0
     print("""press: (shitf + <) to previews breakpoint
 press: (shitf + <) to next breakpoint 
-press: (shitf + k) to restart 
+press: (shitf + s) to restart 
 press: esc to exit""")
     while True:
         key = Key.get_key()
@@ -53,7 +53,7 @@ press: esc to exit""")
             index += 1
         elif key == 'left':
             index -= 1
-        elif key == 'k':
+        elif key == 's':
             system(comand)
             stack = get_stack_dict(stack_file)
         else:

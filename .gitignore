@@ -5,6 +5,9 @@ __pycache__/
 formatacao.py
 # C extensions
 *.so
+teste.py 
+teste.json
+stack_point.json
 testing
 stack
 # Distribution / packaging
