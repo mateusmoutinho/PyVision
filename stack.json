@@ -1,11 +1,10 @@
 {
     "longest_slide_down": {
-        "acumulated": 10,
+        "acumulated": 3,
         "line": [
-            7,
-            4
+            3
         ],
-        "max_of_line": 7
+        "max_of_line": 3
     },
     "line": 10
 }
