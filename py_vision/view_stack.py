@@ -34,6 +34,8 @@ def restart(comand:str,stack_file:str, out:str):
     system(comand)
     stack = get_stack_list(stack_file)
     return stack
+
+
 def main():
     #getting comands
     args = Args()

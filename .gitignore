@@ -5,6 +5,7 @@ __pycache__/
 formatacao.py
 # C extensions
 *.so
+lixo
 teste.py 
 teste.json
 stack_point.json
