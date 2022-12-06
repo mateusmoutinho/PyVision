@@ -12,8 +12,5 @@ setup(
          'py_vision.stack'
    ],
    url='',
-   description='Library to visaulize the execution of a program',
-   install_requires=[
-        'cli-args-system'
-   ]
+   description='Library to visaulize the execution of a program'
 )
